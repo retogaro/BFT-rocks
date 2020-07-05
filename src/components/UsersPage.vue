@@ -119,7 +119,7 @@ export default {
 
 #contacts.page #list table {
   background-color: #ffffff;
-  width: 790px;
+  width: 830px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border-collapse: collapse;
   text-align: left;
