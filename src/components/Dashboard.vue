@@ -7,121 +7,71 @@
 
     <main>
       <nav>
-        <a href="#">
+        <button v-on:click="setPage('users')">
           <img src="../assets/img/user-icon.jpg" alt="user-icon" />
           <span>Users</span>
-        </a>
-        <a href="#">
+        </button>
+        <button v-on:click="setPage('subscriptions')">
           <img src="../assets/img/dashboard-icon.jpg" alt="dashboard-icon" />
-          <span>Dashboard</span>
-        </a>
-        <a href="#">
+          <span>Subscriptions</span>
+        </button>
+        <button v-on:click="setPage('finance')">
           <img src="../assets/img/finance-icon.jpg" alt="finance-icon" />
           <span>Finance</span>
-        </a>
-        <a href="#">
+        </button>
+        <button v-on:click="setPage('calendar')">
           <img src="../assets/img/calendar-icon.jpg" alt="calendar-icon" />
           <span>Calendar</span>
-        </a>
-        <a href="#">
+        </button>
+        <button v-on:click="setPage('settings')">
           <img src="../assets/img/settings-icon.jpg" alt="settings-icon" />
           <span>Settings</span>
-        </a>
+        </button>
       </nav>
 
-      <div id="contacts" class="page">
-        <section id="list">
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Company</th>
-                <th>Email</th>
-                <th>ID</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Jennie Webb</td>
-                <td>Eschoir</td>
-                <td>Jenniewebb@eschoir.com</td>
-                <td>123</td>
-              </tr>
-              <tr>
-                <td>Jacob hughes</td>
-                <td>Securia</td>
-                <td>Jacobhughes@securia.com</td>
-                <td>456</td>
-              </tr>
-              <tr>
-                <td>Knapp Parish</td>
-                <td>Chorizon</td>
-                <td>Knappparish@chorison.com</td>
-                <td>789</td>
-              </tr>
-              <tr>
-                <td>Owen Livingston</td>
-                <td>Zillan</td>
-                <td>Owenlivingston@zillan.com</td>
-                <td>987</td>
-              </tr>
-              <tr>
-                <td>Vanessa Tanner</td>
-                <td>Tingles</td>
-                <td>Vanessatanner@tingles.com</td>
-                <td>654</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
+      <UsersPage v-if="showPage === 'users'"></UsersPage>
 
-        <section id="card">
-          <img
-            src="../assets/img/jacob-hughes-picture.jpg"
-            alt="Jacob-hughes-picture"
-          />
-          <h2>Jacob Hughes</h2>
-          <h4>jacobhughes@securia.com</h4>
+      <SubscriptionsPage
+        v-if="showPage === 'subscriptions'"
+      ></SubscriptionsPage>
 
-          <div class="contact">
-            <div class="left">
-              <h3>Phone</h3>
-              <span>+61 123 456 789</span>
-            </div>
-            <div class="right">
-              <h3>Location</h3>
-              <span>Cheltenham</span>
-            </div>
-          </div>
+      <FinancePage v-if="showPage === 'finance'"></FinancePage>
 
-          <h3>Personal Details</h3>
-          <dl>
-            <dt>DOB</dt>
-            <dd>16 January 1991</dd>
-            <dt>Gender</dt>
-            <dd>Male</dd>
-            <dt>Relationship</dt>
-            <dd>Married</dd>
-            <dt>Medical History</dt>
-            <dd>High Cholestrol</dd>
-          </dl>
+      <CalendarPage v-if="showPage === 'calendar'"></CalendarPage>
 
-          <h3>Membership</h3>
-          <dl>
-            <dt>Type</dt>
-            <dd>Ordinary</dd>
-            <dt>Payment</dt>
-            <dd>Direct Debit</dd>
-          </dl>
-        </section>
-      </div>
+      <SettingsPage v-if="showPage === 'settings'"></SettingsPage>
     </main>
   </div>
 </template>
 
 <script>
+import UsersPage from "./UsersPage.vue";
+import SubscriptionsPage from "./SubscriptionsPage.vue";
+import FinancePage from "./FinancePage.vue";
+import CalendarPage from "./CalendarPage.vue";
+import SettingsPage from "./SettingsPage.vue";
+
 export default {
-  name: "Dashboard"
+  name: "Dashboard",
+  components: {
+    UsersPage,
+    SubscriptionsPage,
+    FinancePage,
+    CalendarPage,
+    SettingsPage
+  },
+
+  data: function() {
+    return {
+      showPage: "users"
+    };
+  },
+  methods: {
+    setPage: function(page) {
+      console.log(page);
+      this.showPage = page;
+    }
+  }
 };
 </script>
 
@@ -170,16 +120,20 @@ main > nav {
   margin-top: 30px;
 }
 
-main > nav > a {
+main > nav > button {
   display: flex;
   align-items: center;
   text-decoration: none;
   line-height: 65px;
   padding-left: 40px;
   color: #7e7e7e;
+  border: 0;
+  outline: 0;
+  background: none;
+  cursor: pointer;
 }
 
-main > nav > a:hover {
+main > nav > button:hover {
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -190,7 +144,7 @@ main > nav > a:hover {
   width: 102%;
 }
 
-main > nav > a > img {
+main > nav > button > img {
   width: 30px;
   padding-right: 15px;
 }
@@ -198,115 +152,10 @@ main > nav > a > img {
 main .page {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
+  justify-content: center;
 }
 
-#contacts {
-  margin-top: 30px;
-}
-
-#list table {
-  background-color: #ffffff;
-  width: 790px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  border-collapse: collapse;
-  line-height: 60px;
-}
-
-#list > table > thead {
-  font-size: 14px;
-  text-align: left;
-}
-
-#list > table > tbody {
-  font-size: 16px;
-}
-
-#list > table td:nth-child(1) {
-  color: #0c97a3;
-  font-weight: bold;
-  width: 25%;
-}
-
-#list > table td:nth-child(2) {
-  width: 15%;
-}
-
-#list > table td:nth-child(3) {
-  width: 40%;
-}
-
-#list > table td:nth-child(4) {
-  width: 15%;
-}
-
-#list > table > tbody > tr:hover {
-  background-color: #0c97b7;
-  color: #ffffff;
-  outline: 4px solid #0c97b7;
-  outline-style: auto;
-}
-
-#list > table tr:hover td:nth-child(1) {
-  color: #ffffff;
-  font-weight: bold;
-}
-
-#card {
-  background-color: #ffffff;
-  width: 320px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-#card > img {
-  margin-top: 32px;
-}
-
-#card .contact {
-  display: flex;
-  justify-content: space-evenly;
-  text-align: left;
-  line-height: 16px;
-  margin-top: 15px;
-}
-
-#card .contact .left > h3 {
-  font-size: 12px;
-}
-
-#card .contact .right > h3 {
-  font-size: 12px;
-}
-
-#card > h3 {
-  font-size: 12px;
-  text-align: left;
-  padding-left: 40px;
-}
-#card > h2,
-h4 {
-  color: #0c838f;
-  margin: 0;
-  text-align: center;
-}
-
-#card > dl {
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 13px;
-  line-height: 24px;
-  text-align: left;
-  padding-left: 40px;
-}
-
-#card > dl > dt {
-  width: 45%;
-}
-
-#card > dl > dd {
-  width: 55%;
-  margin: 0;
+main .page h1 {
+  margin-top: 100px;
 }
 </style>
