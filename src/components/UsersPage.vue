@@ -5,41 +5,17 @@
         <thead>
           <tr>
             <th>Name</th>
+            <th>Gender</th>
             <th>Company</th>
             <th>Email</th>
-            <th>ID</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Jennie Webb</td>
-            <td>Eschoir</td>
-            <td>Jenniewebb@eschoir.com</td>
-            <td>123</td>
-          </tr>
-          <tr>
-            <td>Jacob hughes</td>
-            <td>Securia</td>
-            <td>Jacobhughes@securia.com</td>
-            <td>456</td>
-          </tr>
-          <tr>
-            <td>Knapp Parish</td>
-            <td>Chorizon</td>
-            <td>Knappparish@chorison.com</td>
-            <td>789</td>
-          </tr>
-          <tr>
-            <td>Owen Livingston</td>
-            <td>Zillan</td>
-            <td>Owenlivingston@zillan.com</td>
-            <td>987</td>
-          </tr>
-          <tr>
-            <td>Vanessa Tanner</td>
-            <td>Tingles</td>
-            <td>Vanessatanner@tingles.com</td>
-            <td>654</td>
+          <tr v-for="user in users" v-bind:key="user.index">
+            <td>{{ user.name }}</td>
+            <td>{{ user.gender }}</td>
+            <td>{{ user.company }}</td>
+            <td>{{ user.email }}</td>
           </tr>
         </tbody>
       </table>
@@ -89,7 +65,48 @@
 
 <script>
 export default {
-  name: "UsersPage"
+  name: "UsersPage",
+  data: function() {
+    return {
+      users: [
+        {
+          index: 0,
+          name: "Jeannie Webb",
+          gender: "female",
+          company: "ESCHOIR",
+          email: "jeanniewebb@eschoir.com"
+        },
+        {
+          index: 1,
+          name: "Jacobs Hughes",
+          gender: "male",
+          company: "SECURIA",
+          email: "jacobshughes@securia.com"
+        },
+        {
+          index: 2,
+          name: "Knapp Parrish",
+          gender: "male",
+          company: "CHORIZON",
+          email: "knappparrish@chorizon.com"
+        },
+        {
+          index: 3,
+          name: "Owens Livingston",
+          gender: "male",
+          company: "ZILLAN",
+          email: "owenslivingston@zillan.com"
+        },
+        {
+          index: 4,
+          name: "Vanessa Tanner",
+          gender: "female",
+          company: "TINGLES",
+          email: "vanessatanner@tingles.com"
+        }
+      ]
+    };
+  }
 };
 </script>
 
