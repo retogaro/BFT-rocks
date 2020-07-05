@@ -141,7 +141,7 @@ main > nav > button:hover {
   padding-left: 40px;
   color: #7e7e7e;
   background-color: #ffffff;
-  width: 102%;
+  width: 110%;
 }
 
 main > nav > button > img {

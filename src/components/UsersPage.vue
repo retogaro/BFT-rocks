@@ -113,6 +113,8 @@ export default {
 <style>
 #contacts.page {
   margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 #contacts.page #list table {
@@ -120,34 +122,28 @@ export default {
   width: 790px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border-collapse: collapse;
-  line-height: 60px;
+  text-align: left;
 }
 
 #contacts.page #list > table > thead {
   font-size: 14px;
-  text-align: left;
+}
+
+#contacts.page #list > table th {
+  padding: 35px 10px 20px 30px;
 }
 
 #contacts.page #list > table > tbody {
   font-size: 16px;
 }
 
+#contacts.page #list > table td {
+  padding: 20px 0px 20px 30px;
+}
+
 #contacts.page #list > table td:nth-child(1) {
   color: #0c97a3;
   font-weight: bold;
-  width: 25%;
-}
-
-#contacts.page #list > table td:nth-child(2) {
-  width: 15%;
-}
-
-#contacts.page #list > table td:nth-child(3) {
-  width: 40%;
-}
-
-#contacts.page #list > table td:nth-child(4) {
-  width: 15%;
 }
 
 #contacts.page #list > table > tbody > tr:hover {
