@@ -11,7 +11,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="user in users" v-bind:key="user.index">
+          <tr
+            v-for="user in users"
+            v-bind:key="user.index"
+            v-on:click="showUser(user)"
+          >
             <td>{{ user.name }}</td>
             <td>{{ user.gender }}</td>
             <td>{{ user.company }}</td>
@@ -22,17 +26,13 @@
     </section>
 
     <section id="card">
-      <img
-        src="../assets/img/jacob-hughes-picture.jpg"
-        alt="Jacob-hughes-picture"
-      />
-      <h2>Jacob Hughes</h2>
-      <h4>jacobhughes@securia.com</h4>
+      <h2>{{ shownUser.name }}</h2>
+      <h4>{{ shownUser.email }}</h4>
 
       <div class="contact">
         <div class="left">
           <h3>Phone</h3>
-          <span>+61 123 456 789</span>
+          <span>+61 431 756 223</span>
         </div>
         <div class="right">
           <h3>Location</h3>
@@ -45,7 +45,7 @@
         <dt>DOB</dt>
         <dd>16 January 1991</dd>
         <dt>Gender</dt>
-        <dd>Male</dd>
+        <dd>{{ shownUser.gender }}</dd>
         <dt>Relationship</dt>
         <dd>Married</dd>
         <dt>Medical History</dt>
@@ -54,6 +54,8 @@
 
       <h3>Membership</h3>
       <dl>
+        <dt>Company</dt>
+        <dd>{{ shownUser.company }}</dd>
         <dt>Type</dt>
         <dd>Ordinary</dd>
         <dt>Payment</dt>
@@ -68,6 +70,14 @@ export default {
   name: "UsersPage",
   data: function() {
     return {
+      shownUser: {
+        index: 4,
+        name: "Vanessa Tanner",
+        gender: "female",
+        company: "TINGLES",
+        email: "vanessatanner@tingles.com"
+      },
+
       users: [
         {
           index: 0,
@@ -106,6 +116,13 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    showUser: function(user) {
+      console.log(user.name);
+      console.log(user.gender);
+      this.shownUser = user;
+    }
   }
 };
 </script>
@@ -123,6 +140,7 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border-collapse: collapse;
   text-align: left;
+  cursor: pointer;
 }
 
 #contacts.page #list > table > thead {
@@ -163,6 +181,7 @@ export default {
   width: 320px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 25px 0px;
 }
 
 #contacts.page #card > img {
