@@ -1,24 +1,14 @@
-# bft-rocks
+# BFT Code Challenge
 
-## Project setup
-```
-yarn install
-```
+This repository is a code challenge I did for Body Fit Training, which explains the technology I used.
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+Stack:
 
-### Compiles and minifies for production
-```
-yarn build
-```
+- Vue.js
+- Javascript
+- CSS
+- HTML
+- Sketch
 
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+reto.garo@gmail.com
+ph: +61 431 756 223
